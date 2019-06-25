@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "user",
+    "purchase_option",
+    "price",
+    "minutes_remaining",
+    "created_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "user": {
+      "type": "object"
+    },
+    "purchase_option": {
+      "type": "object"
+    },
+    "price": {
+      "type": "object"
+    },
+    "minutes_remaining": {
+      "type": "integer"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}
