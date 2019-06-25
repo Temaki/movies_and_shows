@@ -5,7 +5,7 @@ describe 'purchase a title route', :type => :request do
     let!(:user) {FactoryBot.create(:user)}
     let!(:movies) {FactoryBot.create_list(:movie, 20)}
     let!(:seasons) {FactoryBot.create_list(:season, 20)}
-    before { post '/api/v1/purchases', params: { purchase: { purchase_option_id: movies.first.purchase_options.first.id, user_id: user.id } } }
+    before { post '/api/v1/purchases', params: { user_id: user.id, purchase: { purchase_option_id: movies.first.purchase_options.first.id } } }
 
     it 'returns purchase object' do
       expect(response).to match_response_schema('purchase')
@@ -22,7 +22,7 @@ describe 'purchase a title route', :type => :request do
     let!(:seasons) {FactoryBot.create_list(:season, 20)}
     let!(:purchase) {Purchase.create(purchase_option_id: movies.first.purchase_options.first.id, user_id: user.id, created_at: 1.day.ago)}
     before {
-      post '/api/v1/purchases', params: { purchase: { purchase_option_id: movies.first.purchase_options.first.id, user_id: user.id } }
+      post '/api/v1/purchases', params: { user_id: user.id, purchase: { purchase_option_id: movies.first.purchase_options.first.id } }
     }
 
     it 'returns status code 422' do
@@ -37,7 +37,7 @@ describe 'purchase a title route', :type => :request do
     let!(:seasons) {FactoryBot.create_list(:season, 20)}
     let!(:purchase) {Purchase.create(purchase_option_id: movies.first.purchase_options.first.id, user_id: user.id, created_at: 4.days.ago)}
     before {
-      post '/api/v1/purchases', params: { purchase: { purchase_option_id: movies.first.purchase_options.first.id, user_id: user.id } }
+      post '/api/v1/purchases', params: { user_id: user.id, purchase: { purchase_option_id: movies.first.purchase_options.first.id } }
     }
 
     it 'returns purchase object' do

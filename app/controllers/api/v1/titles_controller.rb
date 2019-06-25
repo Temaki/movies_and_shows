@@ -4,7 +4,8 @@ module Api
 
       # GET /v1/titles
       def index
-        @titles = Season.order('created_at DESC') + Movie.order('created_at DESC')
+        @titles = Season.all + Movie.all
+        @titles = @titles.sort_by { |st| st.created_at }.reverse
         render json: @titles
       end
 
