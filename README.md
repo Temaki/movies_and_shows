@@ -1,24 +1,17 @@
-# README
+# MOVIES AND SHOWS
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Rails App exposes a RESTful API to list movies and tv shows, allowing a user to purchase content and list purchases.
 
-Things you may want to cover:
+The API has the following endpoints:
 
-* Ruby version
+* GET  /api/v1/movies(.:format) - Lists al the movies
 
-* System dependencies
+* GET  /api/v1/seasons(.:format) - Lists al the seasons
 
-* Configuration
+* GET  /api/v1/titles(.:format) - Lists al the movies and seasons
 
-* Database creation
+* POST /api/v1/purchases(.:format) - Creates a new purchase, expecting the params: { user_id, purchase: { purchase_option_id } }
 
-* Database initialization
+* GET  /api/v1/library(.:format) - Returns the user’s library, expecting the params: { user_id }
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Integration tests were created using RSPEC
